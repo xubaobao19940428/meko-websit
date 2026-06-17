@@ -226,6 +226,7 @@ const Layout = () => {
                             </button>
                         </div>
                         <button
+                            type="button"
                             className={`mobile-nav-button ${isMobileMenuOpen ? 'open' : ''}`}
                             onClick={toggleMobileMenu}
                             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
