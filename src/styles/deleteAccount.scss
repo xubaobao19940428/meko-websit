@@ -1,0 +1,495 @@
+@use './variables' as *;
+
+.delete-account-container {
+	width: 100%;
+	min-height: 100vh;
+	background-color: $bg-color;
+	color: $text-primary;
+	display: flex;
+	flex-direction: column;
+
+	header {
+		width: 100%;
+		height: 72px;
+		padding: 0 24px;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		z-index: 1000;
+		background-color: rgba(255, 255, 255, 0.8);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid #f1f5f9;
+
+		.delete-account-left {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			img {
+				width: 32px;
+				height: 32px;
+			}
+			.delete-account-left-title {
+				font-weight: 600;
+				color: $text-primary;
+				font-size: 20px;
+			}
+		}
+		.delete-account-right {
+			cursor: pointer;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0.6;
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 1;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				filter: none; // Keep original black icon
+			}
+		}
+	}
+
+	.delete-account-content {
+		max-width: 800px;
+		width: 100%;
+		margin: 40px auto;
+		padding: 0 24px;
+		box-sizing: border-box;
+		flex: 1;
+
+		.delete-account-content-top {
+			text-align: center;
+			margin-bottom: 32px;
+
+			.delete-account-content-top-title {
+				font-size: 28px;
+				font-weight: 700;
+				color: $text-primary;
+				margin-bottom: 12px;
+			}
+			.delete-account-content-top-description {
+				color: $text-secondary;
+				font-size: 14px;
+				line-height: 1.6;
+
+				span {
+					color: $primary-color;
+					cursor: pointer;
+					text-decoration: underline;
+
+					&:hover {
+						color: $primary-color;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		/* Wizard Progress Bar */
+		.wizard-progress-bar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: 40px auto;
+			width: 100%;
+			box-sizing: border-box;
+
+			.progress-step {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				position: relative;
+				z-index: 10;
+
+				.step-num {
+					width: 36px;
+					height: 36px;
+					border-radius: 50%;
+					background-color: $body-bg;
+					border: 2px solid $card-border;
+					color: $text-muted;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: 700;
+					font-size: 14px;
+					transition: all 0.3s ease;
+				}
+
+				.step-title {
+					font-size: 12px;
+					font-weight: 600;
+					color: $text-muted;
+					margin-top: 8px;
+					white-space: nowrap;
+					transition: all 0.3s ease;
+				}
+
+				&.active {
+					.step-num {
+						background-color: $primary-color;
+						border-color: $primary-color;
+						color: #ffffff;
+						box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+					}
+
+					.step-title {
+						color: $primary-color;
+					}
+				}
+			}
+
+			.progress-line {
+				flex: 1;
+				height: 2px;
+				background-color: $card-border;
+				margin: 0 12px;
+				transform: translateY(-14px);
+				transition: all 0.3s ease;
+
+				&.active {
+					background: $brand-gradient;
+				}
+			}
+		}
+
+		.delete-account-content-form {
+			width: 100%;
+			background-color: $bg-color;
+			border: 1px solid $card-border;
+			border-radius: 16px;
+			padding: 32px;
+			box-sizing: border-box;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+
+			.step-content-section {
+				width: 100%;
+			}
+
+			.delete-account-content-form-title {
+				font-size: 20px;
+				font-weight: 600;
+				color: $text-primary;
+				margin-bottom: 8px;
+			}
+
+			.delete-account-content-form-description {
+				color: $text-secondary;
+				font-size: 14px;
+				line-height: 1.5;
+				margin-bottom: 24px;
+			}
+
+			.form-section {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			.form-field {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			.form-label {
+				font-size: 14px;
+				font-weight: 600;
+				color: $text-primary;
+			}
+
+			.form-input {
+				width: 100%;
+				padding: 12px 16px;
+				font-size: 15px;
+				color: $text-primary;
+				background-color: $body-bg;
+				border: 1px solid $card-border;
+				border-radius: 8px;
+				box-sizing: border-box;
+				transition: all 0.2s ease;
+
+				&:focus {
+					outline: none;
+					border-color: $primary-color;
+					box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+				}
+
+				&::placeholder {
+					color: #94a3b8;
+				}
+			}
+
+			.form-input-error {
+				border-color: #ef4444 !important;
+				box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+			}
+
+			.form-error-msg {
+				color: #ef4444;
+				font-size: 12px;
+				margin-top: -2px;
+			}
+
+			/* Custom Select inside form */
+			.custom-select {
+				position: relative;
+				width: 100%;
+
+				.custom-select-trigger {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					width: 100%;
+					padding: 12px 16px;
+					font-size: 15px;
+					color: $text-primary;
+					background-color: $body-bg;
+					border: 1px solid $card-border;
+					border-radius: 8px;
+					box-sizing: border-box;
+					cursor: pointer;
+					transition: all 0.2s ease;
+
+					&:hover {
+						border-color: $primary-color;
+					}
+
+					&.open {
+						border-color: $primary-color;
+						box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+					}
+
+					.custom-select-value {
+						flex: 1;
+					}
+
+					.custom-select-arrow {
+						width: 16px;
+						height: 16px;
+						transition: transform 0.2s;
+						filter: none;
+						opacity: 0.5;
+
+						&.rotated {
+							transform: rotate(180deg);
+						}
+					}
+				}
+
+				.custom-select-dropdown {
+					position: absolute;
+					top: 100%;
+					left: 0;
+					right: 0;
+					margin-top: 4px;
+					background-color: $bg-color;
+					border: 1px solid $card-border;
+					border-radius: 8px;
+					box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+					z-index: 1000;
+					max-height: 200px;
+					overflow-y: auto;
+				}
+
+				.custom-select-option {
+					padding: 12px 16px;
+					font-size: 15px;
+					color: $text-secondary;
+					cursor: pointer;
+					transition: all 0.2s;
+
+					&:hover {
+						background-color: $body-bg;
+						color: $text-primary;
+					}
+
+					&.selected {
+						background-color: rgba(59, 130, 246, 0.08);
+						color: $primary-color;
+					}
+				}
+			}
+
+			/* Checkboxes styling */
+			.checkbox-group {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+
+			.checkbox-label {
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+				cursor: pointer;
+				position: relative;
+			}
+
+			.checkbox-input {
+				opacity: 0;
+				position: absolute;
+				width: 0;
+				height: 0;
+
+				& + .checkbox-custom {
+					width: 20px;
+					height: 20px;
+					border: 1px solid $card-border;
+					background-color: $body-bg;
+					border-radius: 4px;
+					position: relative;
+					flex-shrink: 0;
+					transition: all 0.2s;
+					display: inline-block;
+				}
+
+				&:checked + .checkbox-custom {
+					background-color: $primary-color;
+					border-color: $primary-color;
+
+					&::after {
+						content: '';
+						position: absolute;
+						left: 6px;
+						top: 2px;
+						width: 5px;
+						height: 10px;
+						border: solid #ffffff;
+						border-width: 0 2px 2px 0;
+						transform: rotate(45deg);
+					}
+				}
+
+				&:hover + .checkbox-custom {
+					border-color: $primary-color;
+				}
+			}
+
+			.checkbox-text,
+			.checkbox-group-text {
+				font-size: 14px;
+				color: $text-secondary;
+				line-height: 1.4;
+				transition: color 0.2s;
+			}
+
+			.checkbox-label:hover {
+				.checkbox-text,
+				.checkbox-group-text {
+					color: $text-primary;
+				}
+			}
+
+			/* Buttons wrapper */
+			.wizard-buttons {
+				display: flex;
+				justify-content: flex-end;
+				gap: 16px;
+				margin-top: 32px;
+				border-top: 1px solid #f1f5f9;
+				padding-top: 24px;
+
+				.btn-back {
+					background-color: $body-bg;
+					border: 1px solid $card-border;
+					color: $text-secondary;
+					padding: 12px 24px;
+					border-radius: 8px;
+					font-weight: 600;
+					cursor: pointer;
+					transition: all 0.2s ease;
+
+					&:hover {
+						background-color: #f1f5f9;
+						color: $text-primary;
+					}
+				}
+
+				.btn-next,
+				.form-submit-button {
+					background: $brand-gradient;
+					border: none;
+					color: #ffffff;
+					padding: 12px 24px;
+					border-radius: 8px;
+					font-weight: 600;
+					cursor: pointer;
+					transition: all 0.2s ease;
+
+					&:hover {
+						box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+						transform: translateY(-1px);
+					}
+
+					&:active {
+						transform: translateY(0);
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Animations */
+.animate-fade-in {
+	animation: fadeIn 0.35s ease-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive queries */
+@media (max-width: 768px) {
+	.delete-account-container {
+		.delete-account-content {
+			margin: 20px auto;
+
+			.delete-account-content-top {
+				.delete-account-content-top-title {
+					font-size: 22px;
+				}
+			}
+
+			.wizard-progress-bar {
+				margin: 24px auto;
+				.progress-step {
+					.step-title {
+						font-size: 10px;
+					}
+				}
+			}
+
+			.delete-account-content-form {
+				padding: 20px;
+				
+				.wizard-buttons {
+					flex-direction: column-reverse;
+					
+					.btn-back,
+					.btn-next,
+					.form-submit-button {
+						width: 100%;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,353 @@
+@use './variables' as *;
+
+.support-content {
+	margin-top: 3.333vw;
+	padding-bottom: 5.556vw;
+
+	/* Help Center Search Bar */
+	.help-search-container {
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto 40px;
+
+		.search-box-wrapper {
+			position: relative;
+			display: flex;
+			align-items: center;
+
+			.search-icon {
+				position: absolute;
+				left: 16px;
+				font-size: 18px;
+				color: #64748b;
+			}
+
+			.help-search-input {
+				width: 100%;
+				padding: 16px 48px 16px 50px;
+				font-size: 16px;
+				color: $text-primary;
+				background-color: $body-bg;
+				border: 1px solid $card-border;
+				border-radius: 50px;
+				box-sizing: border-box;
+				transition: all 0.25s ease;
+
+				&:focus {
+					outline: none;
+					border-color: $primary-color;
+					background-color: $bg-color;
+					box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+				}
+
+				&::placeholder {
+					color: #94a3b8;
+				}
+			}
+
+			.clear-search-btn {
+				position: absolute;
+				right: 16px;
+				background: none;
+				border: none;
+				color: $text-muted;
+				cursor: pointer;
+				font-size: 14px;
+				padding: 4px;
+
+				&:hover {
+					color: $text-primary;
+				}
+			}
+		}
+	}
+
+	/* Help Category Selector */
+	.help-category-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+		margin-bottom: 48px;
+
+		.help-category-card {
+			background-color: $bg-color;
+			border: 1px solid $card-border;
+			border-radius: 16px;
+			padding: 24px 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+
+			.cat-icon {
+				font-size: 32px;
+				margin-bottom: 12px;
+			}
+
+			.cat-name {
+				font-size: 14px;
+				font-weight: 600;
+				color: $text-secondary;
+				transition: color 0.2s;
+			}
+
+			&:hover {
+				transform: translateY(-4px);
+				background-color: $body-bg;
+				border-color: rgba(59, 130, 246, 0.3);
+
+				.cat-name {
+					color: $text-primary;
+				}
+			}
+
+			&.active {
+				background-color: rgba(59, 130, 246, 0.08);
+				border-color: $primary-color;
+				box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+
+				.cat-name {
+					color: $primary-color;
+				}
+			}
+		}
+	}
+
+	.support-section {
+		margin-bottom: 3.333vw;
+
+		.support-section-title {
+			font-size: 24px;
+			font-weight: 700;
+			color: $text-primary;
+			margin-bottom: 24px;
+			line-height: 1.3;
+		}
+
+		.support-section-desc {
+			font-size: 15px;
+			line-height: 1.6;
+			color: $text-secondary;
+			margin-bottom: 24px;
+		}
+	}
+
+	/* FAQ Accordion */
+	.support-faq-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.support-faq-item {
+		background-color: $bg-color;
+		border: 1px solid $card-border;
+		border-radius: 12px;
+		overflow: hidden;
+		transition: all 0.25s ease;
+
+		.faq-trigger {
+			width: 100%;
+			padding: 20px 24px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: none;
+			border: none;
+			cursor: pointer;
+			text-align: left;
+
+			.faq-question-text {
+				font-size: 16px;
+				font-weight: 600;
+				color: $text-primary;
+				padding-right: 20px;
+			}
+
+			.faq-arrow {
+				font-size: 12px;
+				color: $text-secondary;
+				transition: transform 0.25s;
+			}
+		}
+
+		.faq-answer-wrapper {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.25s ease-out;
+		}
+
+		.faq-answer-content {
+			padding: 0 24px 20px;
+			font-size: 14px;
+			line-height: 1.6;
+			color: $text-secondary;
+
+			a {
+				color: $primary-color;
+				text-decoration: underline;
+
+				&:hover {
+					color: $text-primary;
+				}
+			}
+		}
+
+		&.open {
+			background-color: $bg-color;
+			border-color: $primary-color;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+
+			.faq-trigger .faq-arrow {
+				color: $primary-color;
+				transform: rotate(180deg);
+			}
+
+			.faq-answer-wrapper {
+				max-height: 300px;
+			}
+		}
+
+		&:hover:not(.open) {
+			border-color: rgba(59, 130, 246, 0.25);
+			background-color: $body-bg;
+		}
+	}
+
+	.no-results-msg {
+		text-align: center;
+		padding: 40px;
+		color: $text-secondary;
+		font-size: 15px;
+		background-color: $body-bg;
+		border: 1px dashed $card-border;
+		border-radius: 12px;
+	}
+
+	/* Contact & Company Details */
+	.contact-card-section {
+		margin-top: 48px;
+		border-top: 1px solid $card-border;
+		padding-top: 48px;
+	}
+
+	.support-contact-card {
+		background-color: $body-bg;
+		border: 1px solid $card-border;
+		border-radius: 16px;
+		padding: 32px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+
+		.support-contact-item {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			.support-contact-label {
+				font-size: 12px;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: $text-muted;
+			}
+
+			.support-contact-value {
+				font-size: 18px;
+				font-weight: 600;
+				color: $primary-color;
+				text-decoration: none;
+				align-self: flex-start;
+
+				&:hover {
+					text-decoration: underline;
+					color: $primary-color;
+				}
+			}
+		}
+
+		.support-company-info {
+			border-top: 1px solid $card-border;
+			padding-top: 24px;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+
+			.company-name {
+				font-size: 15px;
+				font-weight: 600;
+				color: $text-primary;
+			}
+
+			.company-address {
+				font-size: 13px;
+				line-height: 1.5;
+				color: $text-secondary;
+			}
+		}
+	}
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+	.support-content {
+		margin-top: 40px;
+		padding-bottom: 40px;
+
+		.help-search-container {
+			margin-bottom: 24px;
+		}
+
+		.help-category-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 12px;
+			margin-bottom: 32px;
+
+			.help-category-card {
+				padding: 16px 12px;
+
+				.cat-icon {
+					font-size: 24px;
+					margin-bottom: 8px;
+				}
+			}
+		}
+
+		.support-section {
+			margin-bottom: 24px;
+
+			.support-section-title {
+				font-size: 20px;
+				margin-bottom: 16px;
+			}
+		}
+
+		.support-faq-item {
+			.faq-trigger {
+				padding: 16px;
+
+				.faq-question-text {
+					font-size: 14px;
+				}
+			}
+
+			.faq-answer-content {
+				padding: 0 16px 16px;
+				font-size: 13px;
+			}
+		}
+
+		.support-contact-card {
+			padding: 20px;
+
+			.support-contact-value {
+				font-size: 16px;
+			}
+		}
+	}
+}

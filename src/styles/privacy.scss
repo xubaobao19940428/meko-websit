@@ -1,0 +1,767 @@
+@use './variables' as *;
+
+.privacy-policy-container {
+	padding: 0 10vw;
+	max-width: 1400px;
+	margin: 0 auto;
+	background-color: $bg-color;
+	font-family: inherit;
+
+	.privacy-policy-header {
+		width: 100%;
+		padding: 6rem 2rem 4rem;
+		background: radial-gradient(circle at top, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+		border-bottom: 1px solid $card-border;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+
+		.privacy-policy-header-content {
+			font-size: 3rem;
+			line-height: 1.2;
+			color: $text-primary;
+			font-weight: 800;
+			letter-spacing: -0.02em;
+			margin-bottom: 1.5rem;
+			background: $brand-gradient;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.privacy-policy-header-description {
+			max-width: 800px;
+			font-size: 1.125rem;
+			line-height: 1.6;
+			color: $text-secondary;
+		}
+
+		.bind-account-description {
+			padding: 0;
+		}
+	}
+
+	.privacy-policy-content-split {
+		display: flex;
+		gap: 4rem;
+		margin-top: 3rem;
+		position: relative;
+		align-items: flex-start;
+		padding-bottom: 6rem;
+	}
+
+	// Desktop Sticky Sidebar
+	.policy-sidebar {
+		position: sticky;
+		top: 100px;
+		width: 260px;
+		flex-shrink: 0;
+		max-height: calc(100vh - 140px);
+		overflow-y: auto;
+		padding-right: 1rem;
+		display: block;
+
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: $card-border;
+			border-radius: 2px;
+		}
+
+		.sidebar-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			border-left: 2px solid $card-border;
+		}
+
+		.sidebar-link {
+			display: block;
+			width: 100%;
+			text-align: left;
+			background: none;
+			border: none;
+			padding: 0.5rem 1.25rem;
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: $text-secondary;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			border-left: 2px solid transparent;
+			margin-left: -2px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			&:hover {
+				color: $primary-color;
+				background: rgba($primary-color, 0.04);
+			}
+
+			&.active {
+				color: $primary-color;
+				font-weight: 600;
+				border-left-color: $primary-color;
+				background: rgba($primary-color, 0.08);
+			}
+		}
+	}
+
+	.privacy-policy-content,
+	.child-safety-content {
+		flex: 1;
+		margin-top: 0;
+	}
+
+	// Child Safety Tabs
+	.child-safety-tabs {
+		display: flex;
+		gap: 1.5rem;
+		margin-top: 3rem;
+		margin-bottom: 2.5rem;
+		border-bottom: 1px solid $card-border;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.child-safety-tab {
+			padding: 1rem 0.5rem;
+			font-size: 1rem;
+			font-weight: 600;
+			color: $text-secondary;
+			background: none;
+			border: none;
+			border-bottom: 2px solid transparent;
+			cursor: pointer;
+			transition: all 0.2s;
+			white-space: nowrap;
+
+			&:hover {
+				color: $text-primary;
+			}
+
+			&.active {
+				color: $primary-color;
+				border-bottom-color: $primary-color;
+			}
+		}
+	}
+
+	.child-safety-swiper-wrapper {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+
+		.child-safety-swiper {
+			width: 100%;
+			overflow: hidden;
+
+			.swiper-wrapper {
+				display: flex;
+			}
+
+			.swiper-slide {
+				width: 100% !important;
+				flex-shrink: 0;
+				height: auto;
+				display: flex;
+				align-items: flex-start;
+			}
+		}
+	}
+
+	.child-safety-content-item {
+		width: 100%;
+		height: auto;
+
+		.child-safety-content-item-title {
+			font-size: 1.75rem;
+			line-height: 1.3;
+			color: $text-primary;
+			font-weight: 700;
+			margin-bottom: 1rem;
+		}
+
+		.child-safety-content-item-desc {
+			margin: 1.5rem 0;
+			font-size: 1.125rem;
+			line-height: 1.6;
+			color: $text-secondary;
+		}
+
+		.upload-image-container {
+			max-width: 500px;
+			width: 100%;
+			padding: 2rem;
+			box-sizing: border-box;
+			border-radius: 1.25rem;
+			background-color: $body-bg;
+			border: 1px solid $card-border;
+			position: relative;
+			margin-bottom: 2rem;
+			box-shadow: $shadow-sm;
+
+			.close-img {
+				position: absolute;
+				top: 1.5rem;
+				right: 1.5rem;
+				width: 1.5rem;
+				height: 1.5rem;
+				cursor: pointer;
+				transition: transform 0.2s;
+
+				&:hover {
+					transform: scale(1.1);
+				}
+			}
+
+			.upload-image-item-title {
+				font-size: 1.125rem;
+				font-weight: 700;
+				color: $text-primary;
+				margin-bottom: 1.25rem;
+			}
+
+			.upload-image-item-preview {
+				width: 100%;
+				height: 300px;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 0.75rem;
+				overflow: hidden;
+				border: 1px solid $card-border;
+				background: #ffffff;
+
+				img {
+					max-width: 100%;
+					max-height: 100%;
+					object-fit: contain;
+				}
+			}
+
+			.upload-image-item-content {
+				width: 100%;
+				height: 300px;
+				position: relative;
+				border-radius: 0.75rem;
+				background-color: #ffffff;
+				border: 2px dashed rgba($primary-color, 0.3);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				padding: 1.5rem;
+				text-align: center;
+
+				&:hover {
+					border-color: $primary-color;
+					background-color: rgba($primary-color, 0.02);
+				}
+
+				img {
+					width: 3.5rem;
+					height: 3.5rem;
+					object-fit: contain;
+					margin-bottom: 1rem;
+				}
+
+				.upload-image-item-content-title {
+					font-size: 1rem;
+					font-weight: 600;
+					color: $text-primary;
+					margin-bottom: 0.5rem;
+				}
+
+				.upload-image-item-content-desc {
+					font-size: 0.875rem;
+					color: $text-muted;
+				}
+
+				.upload-image-item-content-input {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					opacity: 0;
+					cursor: pointer;
+				}
+			}
+
+			.start-detect-btn {
+				margin-top: 1.5rem;
+				width: 100%;
+				display: flex;
+
+				.start-detect-btn-btn {
+					width: 100%;
+					height: 3rem;
+					border-radius: 0.625rem;
+					background: $brand-gradient;
+					color: #ffffff;
+					font-size: 1rem;
+					font-weight: 600;
+					border: none;
+					cursor: pointer;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					transition: all 0.2s ease;
+					box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+
+					&:hover:not(:disabled) {
+						box-shadow: 0 6px 16px rgba($primary-color, 0.35);
+						transform: translateY(-1px);
+					}
+
+					&:active:not(:disabled) {
+						transform: translateY(0);
+					}
+
+					&:disabled {
+						background: $card-border;
+						color: $text-muted;
+						box-shadow: none;
+						cursor: not-allowed;
+					}
+				}
+			}
+
+			.detect-result-content {
+				display: flex;
+				flex-direction: column;
+				gap: 1.25rem;
+
+				.detect-result-content-item {
+					.detect-result-content-item-title {
+						font-size: 0.975rem;
+						font-weight: 600;
+						color: $text-secondary;
+						margin-bottom: 0.5rem;
+
+						span {
+							color: $text-muted;
+							font-size: 0.825rem;
+							font-weight: 400;
+						}
+					}
+
+					.detect-result-content-item-value {
+						width: 100%;
+						height: 3rem;
+						border-radius: 0.5rem;
+						border: 1px solid $card-border;
+						background: #ffffff;
+						padding: 0 1rem;
+						display: flex;
+						align-items: center;
+						font-weight: 500;
+						color: $text-primary;
+					}
+				}
+			}
+		}
+
+		.detect-result-desc {
+			margin-top: 1.5rem;
+			margin-bottom: 2.5rem;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: $text-secondary;
+
+			.policy-link {
+				color: $primary-color;
+				font-weight: 500;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	// Trust & Safety Stats Metrics
+	.safety-metrics-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		margin-top: 2.5rem;
+		margin-bottom: 3rem;
+
+		.metric-card {
+			background: #ffffff;
+			border: 1px solid $card-border;
+			border-radius: 1rem;
+			padding: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 1.25rem;
+			box-shadow: $shadow-sm;
+			transition: all 0.2s ease;
+
+			&:hover {
+				transform: translateY(-2px);
+				box-shadow: $shadow-md;
+			}
+
+			.metric-icon {
+				font-size: 1.75rem;
+				width: 3.5rem;
+				height: 3.5rem;
+				background: $body-bg;
+				border-radius: 0.75rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.metric-info {
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
+			}
+
+			.metric-value {
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: $text-primary;
+			}
+
+			.metric-label {
+				font-size: 0.8125rem;
+				color: $text-secondary;
+			}
+		}
+	}
+
+	// Banned Log Table & BindAccount Styling
+	.bind-account-content {
+		margin-top: 3rem;
+		padding-bottom: 6rem;
+
+		.bind-account-title {
+			font-size: 1.75rem;
+			line-height: 1.3;
+			color: $text-primary;
+			font-weight: 700;
+		}
+
+		.bind-account-description-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 0.75rem;
+			margin-bottom: 1.5rem;
+			padding-bottom: 1rem;
+			border-bottom: 1px solid $card-border;
+			font-size: 0.875rem;
+			color: $text-secondary;
+
+			.bind-account-description-right a {
+				color: $primary-color;
+				text-decoration: none;
+				font-weight: 500;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		.bind-account-content-desc {
+			font-size: 1.0625rem;
+			line-height: 1.5;
+			color: $text-secondary;
+			margin-bottom: 1.5rem;
+		}
+
+		.banned-accounts-table-wrapper {
+			width: 100%;
+			overflow-x: auto;
+			border-radius: 1rem;
+			border: 1px solid $card-border;
+			background: #ffffff;
+			box-shadow: $shadow-sm;
+		}
+
+		.banned-accounts-table {
+			width: 100%;
+			border-collapse: collapse;
+			text-align: left;
+			font-size: 0.875rem;
+
+			thead {
+				background: $body-bg;
+				border-bottom: 1px solid $card-border;
+
+				th {
+					padding: 1rem 1.5rem;
+					font-weight: 600;
+					color: $text-primary;
+					font-size: 0.8125rem;
+					text-transform: uppercase;
+					letter-spacing: 0.05em;
+				}
+			}
+
+			tbody {
+				tr {
+					border-bottom: 1px solid #f1f5f9;
+					transition: background-color 0.2s;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					&:hover {
+						background-color: $body-bg;
+					}
+
+					td {
+						padding: 1.125rem 1.5rem;
+						color: $text-secondary;
+						vertical-align: middle;
+
+						&.user-id {
+							font-family: monospace;
+							font-weight: 600;
+							color: $text-primary;
+						}
+
+						&.nickname {
+							color: $text-primary;
+							font-weight: 500;
+						}
+
+						&.reason {
+							.reason-tag {
+								background: #fee2e2;
+								color: #991b1b;
+								padding: 0.25rem 0.625rem;
+								border-radius: 9999px;
+								font-size: 0.75rem;
+								font-weight: 600;
+								display: inline-block;
+							}
+						}
+
+						&.banned-time {
+							color: $text-muted;
+						}
+					}
+				}
+			}
+		}
+
+		.no-ban-records {
+			padding: 4rem;
+			text-align: center;
+			background: #ffffff;
+			border: 1px dashed $card-border;
+			border-radius: 1rem;
+			color: $text-muted;
+			font-size: 1rem;
+		}
+	}
+}
+
+// Policy Text Styles
+.policy-text-content {
+	text-align: left;
+	line-height: 1.75;
+	color: $text-secondary;
+	font-size: 1rem;
+
+	.policy-title {
+		font-size: 2.25rem;
+		font-weight: 800;
+		line-height: 1.3;
+		color: $text-primary;
+		margin-bottom: 0.75rem;
+		letter-spacing: -0.02em;
+	}
+
+	.policy-meta {
+		font-size: 0.875rem;
+		color: $text-muted;
+		margin-bottom: 2.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid $card-border;
+	}
+
+	.section-heading,
+	.policy-section-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: $text-primary;
+		margin-top: 3rem;
+		margin-bottom: 1rem;
+		scroll-margin-top: 100px;
+	}
+
+	.policy-subsection-title {
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: $text-primary;
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
+	}
+
+	p {
+		margin-bottom: 1rem;
+	}
+
+	ul, ol {
+		margin-left: 1.5rem;
+		margin-bottom: 1rem;
+
+		li {
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	.policy-image {
+		max-width: 100%;
+		border-radius: 0.75rem;
+		margin: 1.5rem 0;
+		border: 1px solid $card-border;
+		box-shadow: $shadow-sm;
+	}
+
+	.policy-link {
+		color: $primary-color;
+		text-decoration: none;
+		font-weight: 600;
+		transition: color 0.2s;
+
+		&:hover {
+			text-decoration: underline;
+			color: darken($primary-color, 10%);
+		}
+	}
+}
+
+// Responsive Rules
+@media (max-width: 1024px) {
+	.privacy-policy-container {
+		padding: 0 1.5rem;
+
+		.privacy-policy-header {
+			padding: 4rem 1rem 2.5rem;
+
+			.privacy-policy-header-content {
+				font-size: 2.25rem;
+			}
+
+			.privacy-policy-header-description {
+				font-size: 1rem;
+			}
+		}
+
+		.privacy-policy-content-split {
+			gap: 0;
+			margin-top: 2rem;
+		}
+
+		.hide-mobile {
+			display: none !important;
+		}
+
+		.safety-metrics-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.child-safety-tabs {
+			margin-top: 2rem;
+			margin-bottom: 1.5rem;
+
+			.child-safety-tab {
+				padding: 0.75rem 0.25rem;
+				font-size: 0.875rem;
+			}
+		}
+
+		.child-safety-content-item {
+			.child-safety-content-item-title {
+				font-size: 1.5rem;
+			}
+
+			.child-safety-content-item-desc {
+				font-size: 1rem;
+				margin: 1rem 0;
+			}
+
+			.upload-image-container {
+				padding: 1.25rem;
+				border-radius: 1rem;
+
+				.upload-image-item-content,
+				.upload-image-item-preview {
+					height: 250px;
+				}
+
+				.start-detect-btn {
+					margin-top: 1rem;
+				}
+			}
+		}
+
+		.bind-account-content {
+			.bind-account-title {
+				font-size: 1.5rem;
+			}
+
+			.bind-account-description-row {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.5rem;
+			}
+
+			.banned-accounts-table {
+				thead th {
+					padding: 0.75rem 1rem;
+					font-size: 0.75rem;
+				}
+
+				tbody tr td {
+					padding: 0.875rem 1rem;
+					font-size: 0.8125rem;
+				}
+			}
+		}
+	}
+
+	.policy-text-content {
+		font-size: 0.9375rem;
+
+		.policy-title {
+			font-size: 1.75rem;
+		}
+
+		.section-heading,
+		.policy-section-title {
+			font-size: 1.25rem;
+			margin-top: 2rem;
+		}
+
+		.policy-subsection-title {
+			font-size: 1.0625rem;
+			margin-top: 1.5rem;
+		}
+	}
+}
