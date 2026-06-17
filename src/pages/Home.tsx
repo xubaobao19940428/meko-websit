@@ -58,14 +58,14 @@ const faqs = [
         question: 'What is Meko?',
         answer: 'Meko is a mobile-first social discovery app for people who want fast, live conversations across regions.',
     },
-    {
-        question: 'Can I use Meko without a long sign-up flow?',
-        answer: 'Yes. Meko supports guest-friendly access so new users can explore before binding a permanent account.',
-    },
-    {
-        question: 'How does Meko handle safety?',
-        answer: 'Meko combines reporting tools, content review, child safety policies, and public enforcement information to keep trust visible.',
-    },
+    // {
+    //     question: 'Can I use Meko without a long sign-up flow?',
+    //     answer: 'Yes. Meko supports guest-friendly access so new users can explore before binding a permanent account.',
+    // },
+    // {
+    //     question: 'How does Meko handle safety?',
+    //     answer: 'Meko combines reporting tools, content review, child safety policies, and public enforcement information to keep trust visible.',
+    // },
     {
         question: 'Where can I get help?',
         answer: 'Use the Help Center for common questions, or contact maxmekosocial@gmail.com for account and support requests.',
@@ -133,7 +133,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="meko-section meko-section--split">
+            {/* <section className="meko-section meko-section--split">
                 <div>
                     <p className="section-kicker">Product focus</p>
                     <h2>Built for short, real sessions instead of endless browsing.</h2>
@@ -142,9 +142,9 @@ const Home = () => {
                     The site now presents Meko as a practical communication product: faster matching, clearer safety,
                     visible support, and account controls that are easy to reach.
                 </p>
-            </section>
+            </section> */}
 
-            <section className="feature-grid" aria-label="Meko highlights">
+            {/* <section className="feature-grid" aria-label="Meko highlights">
                 {features.map(feature => (
                     <article className="feature-card" key={feature.title}>
                         <img src={feature.image} alt="" />
@@ -152,7 +152,7 @@ const Home = () => {
                         <p>{feature.description}</p>
                     </article>
                 ))}
-            </section>
+            </section> */}
 
             <section className="flow-section">
                 <div className="flow-heading">
