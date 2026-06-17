@@ -18,6 +18,10 @@
 	position: relative;
 }
 
+.is-download-hidden {
+	display: none !important;
+}
+
 // Meko refreshed homepage
 .nav-links {
 	gap: clamp(18px, 2.2vw, 42px);

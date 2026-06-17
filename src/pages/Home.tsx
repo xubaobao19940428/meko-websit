@@ -93,7 +93,7 @@ const Home = () => {
                         <p className="meko-hero__description">
                             Meet people through quick live matching, translated chat, and safety tools that stay close at hand.
                         </p>
-                        <div className="meko-hero__actions" aria-label="Download Meko">
+                        <div className="meko-hero__actions is-download-hidden" aria-label="Download Meko">
                             <button className="store-button" onClick={handleDownloadAndroid}>
                                 <img src="/images/google-play.webp" alt="Get it on Google Play" />
                             </button>

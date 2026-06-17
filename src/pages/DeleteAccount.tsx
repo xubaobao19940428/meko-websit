@@ -479,7 +479,7 @@ const DeleteAccount = () => {
                             </h3>
                         </div>
 
-                        <div className="footer-buttons">
+                        <div className="footer-buttons is-download-hidden">
                             <img src="/images/google-play.webp" alt="Google Play Store" className="footer-button" onClick={handleDownAndroid}/>
                         </div>
                     </div>
